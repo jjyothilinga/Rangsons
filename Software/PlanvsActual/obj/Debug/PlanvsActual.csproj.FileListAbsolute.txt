@@ -1,0 +1,16 @@
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\bin\Debug\PlanvsActual.exe.config
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\bin\Debug\PlanvsActual.exe
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\bin\Debug\PlanvsActual.pdb
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\PlanvsActual.csprojResolveAssemblyReference.cache
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\MainWindow.baml
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\MainWindow.g.cs
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\App.g.cs
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\PlanvsActual_MarkupCompile.cache
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\PlanvsActual.g.resources
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\PlanvsActual.Properties.Resources.resources
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\PlanvsActual.csproj.GenerateResource.Cache
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\PlanvsActual.exe
+C:\Users\JO\Desktop\ongoing pojects\Rangsons\PlanvsActual\obj\Debug\PlanvsActual.pdb
+C:\Users\JO\Desktop\ongoing pojects\Rangsons_software\PlanvsActual\bin\Debug\PlanvsActual.exe.config
+C:\Users\JO\Desktop\ongoing pojects\Rangsons_software\PlanvsActual\obj\Debug\PlanvsActual.exe
+C:\Users\JO\Desktop\ongoing pojects\Rangsons_software\PlanvsActual\obj\Debug\PlanvsActual.pdb
