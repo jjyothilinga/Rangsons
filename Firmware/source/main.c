@@ -177,7 +177,7 @@ void main(void)
 
 	BRD_init();
 	HB_init();
-	DigitDisplay_init(8);
+	DigitDisplay_init(MAX_DIGITS); 
 	MMD_init();  // Display initialization
 
 

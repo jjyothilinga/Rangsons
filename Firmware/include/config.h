@@ -10,9 +10,6 @@
 
 #define DEVICE_ADDRESS			0x01
 
-
-#define __FACTORY_CONFIGURATION__
-
 #define __DISPLAY_TEST__ 
 
 
@@ -105,7 +102,7 @@ enum
 #define SET_PLAN 			0x81
 #define MODIFY_PLAN 		0x82
 
-#define NO_OF_DIGITS		(0X04)
+#define NO_OF_DIGITS		(0x04)
 #define MAX_COUNT			(9999)
 
 /*
