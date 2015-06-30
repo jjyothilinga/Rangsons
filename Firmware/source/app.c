@@ -31,6 +31,7 @@ typedef struct _APP
     UINT8 Plan[NO_OF_DIGITS];
 	UINT8 Input_Recieved;
 	UINT8 plan_eepUpdate;
+	UINT8 plan_eepModify;
 	UINT8 actual_eepUpdate;
 }APP;
 
@@ -80,14 +81,12 @@ void APP_init(void)
 		Busy_eep();
 	}
 
-	app.Actual_Count = Read_b_eep(EPROM_ADD_ACTUAL);
-	Busy_eep();
-	app.Actual_Count <<= 8;
-	app.Actual_Count |= Read_b_eep(EPROM_ADD_ACTUAL+1);
-	Busy_eep();
-
-	APP_ASCIIconversion();
-
+  	for(i= 0; i < NO_OF_DIGITS; i++)
+	{
+		app.Actual[i] = Read_b_eep(EPROM_ADD_ACTUAL + i  );
+		Busy_eep();
+	}
+	app.Actual_Count = (((app.Actual[3] - '0')* 1000) + ((app.Actual[2] - '0')* 100 )+ ((app.Actual[1] - '0')* 10) + (app.Actual[0] - '0'));
 	DigitDisplay_updateBufferPartial(app.Plan,0,4);
 	DigitDisplay_updateBufferPartial(app.Actual,4,4);  
 
@@ -130,17 +129,21 @@ void APP_task(void)
 	switch(app.state)
 	{
 		case COUNT:
-           if ((LinearKeyPad_getKeyState(START_PB) == 1)&& (app.Input_Recieved == 0))
+           if ((LinearKeyPad_getKeyState(START_PB) == TRUE )&& (app.Input_Recieved == FALSE))
            { 
+
    	       		if(app.Actual_Count < 9999)
 				{
-					app.Actual_Count++;
+					++app.Actual_Count;
 				}
 				else
 					app.Actual_Count = 0;
+
 			    APP_ASCIIconversion();
+
+
 			    DigitDisplay_updateBufferPartial(app.Actual,4 ,4);
-			    app.Input_Recieved = 1;
+			    app.Input_Recieved = TRUE;
 				app.actual_eepUpdate = TRUE;
 				app.state = WAIT;
 			}
@@ -148,9 +151,9 @@ void APP_task(void)
 		break;
 
 		case WAIT:
-		     if ((LinearKeyPad_getKeyState(START_PB) == 0))
+		     if ((LinearKeyPad_getKeyState(START_PB) == FALSE))
 	         {
-				app.Input_Recieved = 0;
+				app.Input_Recieved = FALSE;
                 app.state = COUNT;
 	         }      
 		break;
@@ -162,15 +165,12 @@ void APP_task(void)
 	//Update actual count in EEPROM
 	if(app.actual_eepUpdate == TRUE)
 	{
-		temp = app.Actual_Count;
 		app.actual_eepUpdate = FALSE;
-	
-		Write_b_eep(EPROM_ADD_ACTUAL, (UINT8)(temp >> 8));
-	//	Busy_eep();
-
-		Write_b_eep(EPROM_ADD_ACTUAL+1, (UINT8)temp );
-	//	Busy_eep();
-		
+		for(i= 0; i < NO_OF_DIGITS; i++)
+		{
+			Write_b_eep(EPROM_ADD_ACTUAL+ i ,app.Actual[i] );
+			Busy_eep();
+		}
 	}
 
 	//Update planned quantity in EEPROM
@@ -181,11 +181,24 @@ void APP_task(void)
 		{
 			Write_b_eep(EPROM_ADD_PLAN + i ,app.Plan[i] );
 			Busy_eep();
-			Write_b_eep(EPROM_ADD_ACTUAL + i ,0 );
+			Write_b_eep(EPROM_ADD_ACTUAL + i ,'0' );
 			Busy_eep();
 		}
 	
 	}
+
+	if(app.plan_eepModify == TRUE )
+	{
+		app.plan_eepModify = FALSE;  
+		for(i= 0; i < NO_OF_DIGITS; i++)
+		{
+			Write_b_eep(EPROM_ADD_PLAN + i ,app.Plan[i] );
+			Busy_eep();
+
+		}
+	
+	}
+
 
 }
 
@@ -211,6 +224,7 @@ void APP_ASCIIconversion(void)
 	       app.Actual[i] = (count % 10)  + '0';
 		   count /= 10;
 	}
+ 
  
 }
 
@@ -275,7 +289,8 @@ UINT8 APP_comCallBack( far UINT8 *rxPacket, far UINT8* txCode,far UINT8** txPack
 	
 
         case MODIFY_PLAN:
-			app.plan_eepUpdate = TRUE;
+
+			app.plan_eepModify = TRUE;
 
             for(i=0;i<4;i++)
                 app.Plan[i] = rxPacket[i+1];

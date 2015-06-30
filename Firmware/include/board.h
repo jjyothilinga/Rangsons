@@ -85,23 +85,22 @@
 #define		DIGIT_PORT				PORTE	//LATB	 				// digit drivers(upto 128 digits)
 #define		DIGIT_PORT_DIR			TRISE	//LATB	 				// digit drivers(upto 128 digits)
 
-#define		ROW_SEL_A				PORTDbits.RD0			// decoder digit sel A
-#define		ROW_SEL_A_DIR			TRISDbits.TRISD0
-#define		ROW_SEL_B				PORTDbits.RD1		// decoder digit sel B
-#define		ROW_SEL_B_DIR			TRISDbits.TRISD1
-#define		ROW_SEL_C				PORTDbits.RD2		// decoder digit sel C
-#define		ROW_SEL_C_DIR			TRISDbits.TRISD2
-#define		ROW_SEL_D				PORTDbits.RD3		// decoder digit sel D
-#define		ROW_SEL_D_DIR			TRISDbits.TRISD3
-#define		ROW_SEL_E				PORTDbits.RD4		// decoder digit sel E
-#define		ROW_SEL_E_DIR			TRISDbits.TRISD4
-#define		ROW_SEL_F				PORTDbits.RD5		// decoder digit sel F
-#define		ROW_SEL_F_DIR			TRISDbits.TRISD5
-#define		ROW_SEL_G				PORTDbits.RD6	// decoder digit sel G
-#define		ROW_SEL_G_DIR			TRISDbits.TRISD6
-#define		ROW_SEL_H				PORTDbits.RD7	// decoder digit sel G
-#define		ROW_SEL_H_DIR			TRISDbits.TRISD7
-
+#define		ROW_SEL_A				PORTDbits.RD7			// decoder digit sel A
+#define		ROW_SEL_A_DIR			TRISDbits.TRISD7
+#define		ROW_SEL_B				PORTDbits.RD6		// decoder digit sel B
+#define		ROW_SEL_B_DIR			TRISDbits.TRISD6
+#define		ROW_SEL_C				PORTDbits.RD5		// decoder digit sel C
+#define		ROW_SEL_C_DIR			TRISDbits.TRISD5
+#define		ROW_SEL_D				PORTDbits.RD4		// decoder digit sel D
+#define		ROW_SEL_D_DIR			TRISDbits.TRISD4
+#define		ROW_SEL_E				PORTDbits.RD3		// decoder digit sel E
+#define		ROW_SEL_E_DIR			TRISDbits.TRISD3
+#define		ROW_SEL_F				PORTDbits.RD2		// decoder digit sel F
+#define		ROW_SEL_F_DIR			TRISDbits.TRISD2
+#define		ROW_SEL_G				PORTDbits.RD1	// decoder digit sel G
+#define		ROW_SEL_G_DIR			TRISDbits.TRISD1
+#define		ROW_SEL_H				PORTDbits.RD0	// decoder digit sel G
+#define		ROW_SEL_H_DIR			TRISDbits.TRISD0
 //Digit Selection 
 #define	DIGIT_SEL_A                     PORTJbits.RJ0
 #define	DIGIT_SEL_A_DIRECTION			TRISJbits.TRISJ0

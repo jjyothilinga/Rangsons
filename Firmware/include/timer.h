@@ -69,6 +69,7 @@ extern void TMR1_init(unsigned int reload , void (*func)());
 void TMR1_ISR(void);
 void TMR0_ISR(void);
 void TMR3_init(unsigned int reload , void (*func)());
+UINT32 GetAppTime(void);
 
 #endif
 /*
